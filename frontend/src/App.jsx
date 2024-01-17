@@ -5,13 +5,13 @@ import './App.css';
 import Connexion from './pages/Connexion';
 import Template from './layouts/Template';
 import Inscription from './pages/Inscription';
+import ProtectedRoutes from './pages/ProtectedRoutes';
 
 function App() {
   return (
     <>
-      <Connexion />
-      {/* <Inscription /> */}
-      {/* <Template /> */}
+      {/* <Connexion /> */}
+      <ProtectedRoutes />
     </>
   );
 }

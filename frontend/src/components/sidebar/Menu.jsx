@@ -1,13 +1,17 @@
 import React from 'react';
-import { Link } from 'react-router-dom';
+import { Link, NavLink } from 'react-router-dom';
 
 export default function Menu({ icone, text, link }) {
   return (
-    <a to={link}>
-      <div className="flex-row gap-5 flex my-2 items-center text-white">
+    <NavLink
+      to={link}
+      activeClassName="active"
+      className="list-group-item px-2 list-group-item bg-transparent border-0 py-1 ps-5 nvlink"
+    >
+      <li className="flex-row gap-5 flex my-2 items-center no-underline">
         <div> {icone} </div>
-        <h2 className="text-base font-bold texto">{text}</h2>
-      </div>
-    </a>
+        <h2 className="text-base font-bold texto max-lg:hidden">{text}</h2>
+      </li>
+    </NavLink>
   );
 }

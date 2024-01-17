@@ -5,18 +5,34 @@ import { Avatar } from 'primereact/avatar';
 import User from '../../assets/user.png';
 import { InputText } from 'primereact/inputtext';
 import { RxExit } from 'react-icons/rx';
+import { useLocation } from 'react-router-dom';
 
 export default function Header() {
+  const location = useLocation();
+  const path = location.pathname;
+
+  // Function to derive the header title based on the current route
+  const getHeaderTitle = () => {
+    switch (path) {
+      case '/main/dashboard':
+        return 'Dashboard';
+      case '/main/listhotels':
+        return 'Liste des hôtels';
+      // Add more cases for other routes if needed
+      default:
+        return 'Unknown Page';
+    }
+  };
   return (
-    <header className="bg-white shadow">
-      <div className="max-w-7xl py-6 px-4 sm:px-6 lg:px-8 flex justify-between items-center">
-        <h1 className="text-3xl font-bold leading-tight text-gray-900">
-          Dashboard
-        </h1>
+    <header className="bg-white shadow fixed">
+      <div className=" w-[80vw] max-lg:w-[98vw] py-5 flex justify-between px-8 items-center">
+        <h4 className="text-2xl font-bold leading-tight text-gray-900">
+          {getHeaderTitle()}
+        </h4>
         <div className="flex justify-between gap-3">
           <div className="flex items-center">
-            <div className="flex border-2 rounded-full ">
-              <span className="p-input-icon-left flex items-center w-64 ">
+            <div className="flex border-2 rounded-full">
+              <span className="p-input-icon-left flex items-center w-64">
                 <div className="ps-3">
                   <IoSearch className="text-xl" />
                 </div>

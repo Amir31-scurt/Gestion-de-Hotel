@@ -1,4 +1,5 @@
 import React from 'react';
+import { Link } from 'react-router-dom';
 
 export default function Inscription() {
   return (
@@ -73,9 +74,12 @@ export default function Inscription() {
           </span>
           <div className="text-amber-300 text-center text-xl leading-7 self-center whitespace-nowrap mt-7">
             Vous avez déjà un compte?{' '}
-            <a href="#" className="font-bold text-amber-300">
+            <Link
+              to="/"
+              className="font-bold text-amber-300 hover:no-underline hover:text-amber-500"
+            >
               Se connecter
-            </a>
+            </Link>
           </div>
         </header>
       </form>
