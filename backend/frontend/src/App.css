@@ -1,0 +1,39 @@
+.fromBack {
+  background-image: url(./assets/Background.png);
+}
+.InscripForm {
+  background-image: url(./assets/Background.png);
+  object-fit: contain;
+}
+#name:focus,
+#email:focus,
+#password:focus {
+  border-bottom: 2px solid #ffbf00; /* Example: a bright yellow for visibility */
+  outline: none;
+}
+.sideBarCompo {
+  background-image: url(./assets/Background.png);
+  object-fit: contain;
+}
+.ponite {
+  padding: 5px;
+  background-color: #00ff92;
+  border-radius: 50%;
+  margin-top: 4px;
+}
+.sideBarCompo .nvlink {
+  color: #fff;
+  text-decoration: none;
+}
+.sideBarCompo .nvlink {
+  color: #fff;
+}
+.sideBarCompo .active {
+  background-color: #ffffffd9;
+  color: #4d5154;
+  font-weight: bold;
+  width: 100%;
+}
+.cardsHot {
+  display: flex;
+}
