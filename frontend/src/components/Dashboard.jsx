@@ -12,7 +12,7 @@ const useDashboardViewModel = () => {
 
 // View
 const WelcomeMessage = ({ message, subTitle }) => (
-  <div className="1st bg-white shadow mt-20 pt-2">
+  <div className="1st bg-white shadow mt-14 pt-2">
     <div className="max-w-7xl py-5 px-4 sm:px-6 lg:px-8">
       <p className="text-2xl leading-tight text-gray-900 m-0 p-0">{message}</p>
       <p className="text-sm text-gray-500 m-0 p-0">{subTitle}</p>

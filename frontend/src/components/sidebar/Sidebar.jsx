@@ -11,7 +11,7 @@ export default function Sidebar() {
       <div className="flex flex-col max-lg:flex-row justify-center max-lg:justify-between">
         <div className="flex items-center justify-start ps-5 gap-3 mt-3 ">
           <div className="nom">
-            <span className="self-center flex items-stretch gap-5 mt-5 max-lg:mt-0">
+            <span className="self-center flex items-stretch gap-5 max-lg:mt-0">
               <img
                 loading="lazy"
                 src="https://cdn.builder.io/api/v1/image/assets/TEMP/eb8a7e148474c44ca3a8f00e912ec36d75e65e66ea5a11d887147fa69fca8378?apiKey=43ce1334d0e849af9a7e83b039f606d4&"
@@ -27,9 +27,9 @@ export default function Sidebar() {
 
         {/************* Menu ************/}
 
-        <div className="mt-5 max-lg:mt-0 longuer">
+        <div className="max-lg:mt-0 longuer">
           {/***=========== Main-Menu ===========***/}
-          <div className="flex-col max-lg:flex-row flex gap-2">
+          <div className="flex-col max-lg:flex-row flex">
             <div>
               <h1 className="text-gray-200 ps-5 max-lg:hidden">Principal</h1>
             </div>

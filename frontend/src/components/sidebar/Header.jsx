@@ -1,17 +1,32 @@
-import React from 'react';
+import React, { useEffect, useState } from 'react';
 import { IoSearch } from 'react-icons/io5';
 import { MdNotificationsNone } from 'react-icons/md';
-import { Avatar } from 'primereact/avatar';
 import User from '../../assets/user.png';
 import { InputText } from 'primereact/inputtext';
 import { RxExit } from 'react-icons/rx';
-import { useLocation } from 'react-router-dom';
+import { useLocation, useNavigate } from 'react-router-dom';
+import { getUserDetails } from '../../util/GetUser';
 
 export default function Header() {
   const location = useLocation();
   const path = location.pathname;
+  const navigate = useNavigate();
 
+  const [user, setUser] = useState();
+
+  if (!user) {
+    navigate('/');
+  }
+
+  useEffect(() => {
+    const userDetails = getUserDetails();
+    setUser(userDetails);
+  }, []);
   // Function to derive the header title based on the current route
+  const handleLougout = () => {
+    localStorage.removeItem('User');
+    navigate('/');
+  };
   const getHeaderTitle = () => {
     switch (path) {
       case '/main/dashboard':
@@ -25,8 +40,8 @@ export default function Header() {
   };
   return (
     <header className="bg-white shadow fixed">
-      <div className=" w-[80vw] max-lg:w-[98vw] py-5 flex justify-between px-8 items-center">
-        <h4 className="text-2xl font-bold leading-tight text-gray-900">
+      <div className=" w-[80vw] max-lg:w-[98vw] py-3 flex justify-between px-8 items-center">
+        <h4 className="text-2xl font-medium leading-tight text-gray-900">
           {getHeaderTitle()}
         </h4>
         <div className="flex justify-between gap-3">
@@ -47,15 +62,8 @@ export default function Header() {
             <button>
               <MdNotificationsNone className="text-2xl" />
             </button>
-            <button className="">
-              <Avatar
-                image={User}
-                shape="circle"
-                style={{ width: '45px', height: '45px' }}
-              />
-              <div className="ponite absolute border-2 top-[50px] right-[69px]"></div>
-            </button>
-            <button>
+
+            <button onClick={handleLougout}>
               <RxExit className="text-2xl" />
             </button>
           </div>

@@ -12,7 +12,7 @@ export default function HotelsList() {
   const handleClose = () => isOpen(false);
   return (
     <div>
-      <div className="flex items-center justify-between bg-white shadow fixed mt-[89px] w-full max-w-7xl max-lg:pe-5 pe-20">
+      <div className="flex items-center justify-between bg-white shadow fixed mt-[55px] w-full max-w-7xl max-lg:pe-5 pe-20">
         <div className="flex items-center gap-2 max-w-7xl py-6 px-4 sm:px-6 lg:px-8">
           <p className="text-2xl text-gray-900">
             Hôtels <span className="text-2xl text-gray-500">8</span>

@@ -1,9 +1,21 @@
-import React from 'react';
+import React, { useEffect, useState } from 'react';
 import Sidebar from '../components/sidebar/Sidebar';
 import Header from '../components/sidebar/Header';
-import { Outlet } from 'react-router-dom';
+import { Outlet, useNavigate } from 'react-router-dom';
+import { getUserDetails } from '../util/GetUser';
 
 export default function Template() {
+  const [user, setUser] = useState('');
+  const navigate = useNavigate();
+
+  useEffect(() => {
+    const userDetails = getUserDetails();
+    setUser(userDetails);
+  }, []);
+
+  if (!user) {
+    navigate('/');
+  }
   return (
     <div className="flex h-full">
       {/************ SidBar********** */}

@@ -11,36 +11,42 @@ const useDashcardsViewModel = () => {
       title: 'Formulaire',
       description: 'Je ne sais pas quoi mettre',
       icon: <IoMailOpen className="text-2xl max-lg:text-3xl" />,
+      bg: 'bg-violet-400',
     },
     {
       number: 40,
       title: 'Messages',
       description: 'Je ne sais pas quoi mettre',
       icon: <TbLetterP className="text-2xl max-lg:text-3xl" />,
+      bg: 'bg-teal-500',
     },
     {
       number: 600,
       title: 'Utilisateurs',
       description: 'Je ne sais pas quoi mettre',
       icon: <IoMdContacts className="text-2xl max-lg:text-3xl" />,
+      bg: 'bg-yellow-400',
     },
     {
       number: 25,
       title: 'E-mails',
       description: 'Je ne sais pas quoi mettre',
       icon: <IoMailOpen className="text-2xl max-lg:text-3xl" />,
+      bg: 'bg-red-600',
     },
     {
       number: 40,
       title: 'Hôtels',
       description: 'Je ne sais pas quoi mettre',
       icon: <TbLetterP className="text-2xl max-lg:text-3xl" />,
+      bg: 'bg-fuchsia-700',
     },
     {
       number: '02',
       title: 'Entités',
       description: 'Je ne sais pas quoi mettre',
       icon: <IoMdContacts className="text-2xl max-lg:text-3xl" />,
+      bg: 'bg-blue-700',
     },
   ];
 
@@ -61,10 +67,10 @@ const Dashcards = () => {
             key={index}
             className="justify-center shadow-sm bg-white grow w-full pl-5 pr-20 py-5 rounded-2xl max-md:max-w-full max-md:mt-10 max-md:px-5"
           >
-            <header className="gap-2 flex max-lg:items-center">
-              <div className="flex flex-col items-stretch w-3/12">
+            <header className="flex max-lg:items-center">
+              <div className="flex flex-col items-stretch w-16">
                 <span
-                  className="flex justify-center text-white text-opacity-90 text-center leading-6 whitespace-nowrap items-center bg-violet-400 aspect-square w-full px-6 rounded-full max-lg:px-3"
+                  className={`flex justify-center text-white text-opacity-90 text-center leading-6 whitespace-nowrap items-center aspect-square w-full rounded-full max-lg:px-3 ${item.bg}`}
                   role="button"
                   aria-label="Icon Button"
                 >
@@ -72,16 +78,16 @@ const Dashcards = () => {
                 </span>
               </div>
               <div className="flex flex-col items-stretch w-9/12 ml-5 max-md:w-full max-md:ml-0">
-                <div className="flex flex-col items-stretch my-auto gap-1">
+                <div className="flex flex-col items-stretch">
                   <div className="flex items-center justify-center gap-2">
                     <p className="justify-center text-black text-opacity-90 text-3xl font-light leading-9">
                       {item.number}
                     </p>
-                    <p className="text-black text-opacity-90 text-lg font-light grow self-end">
+                    <p className="text-black text-opacity-90 text-base font-light grow self-end">
                       {item.title}
                     </p>
                   </div>
-                  <div className="text-black text-opacity-90 text-lg leading-6 whitespace-wrap">
+                  <div className="text-black text-opacity-60 text-base leading-6 whitespace-wrap">
                     {item.description}
                   </div>
                 </div>
