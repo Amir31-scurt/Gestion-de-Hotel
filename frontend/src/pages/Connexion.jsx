@@ -4,6 +4,9 @@ import AuthServices from '../services/AuthServices';
 import { message } from 'antd';
 import { Header } from '../utils/Header';
 import { getErrorMessage } from '../util/GetError';
+import { FormInput } from '../utils/FormInput';
+import { Button } from '../utils/Button';
+import { Checkbox } from '../utils/Checkbox';
 
 function Connexion() {
   const [email, setEmail] = useState('');
@@ -24,7 +27,7 @@ function Connexion() {
       console.log(response.data);
       localStorage.setItem('User', JSON.stringify(response.data)); // store user in local storage
       message.success('Connexion réussie');
-      navigate('main/dashboard');
+      navigate('/dashboard');
       setLoading(false);
     } catch (err) {
       console.log(err);
@@ -37,45 +40,31 @@ function Connexion() {
       <header className="flex w-full flex-col justify-center items-center px-16 max-md:max-w-full max-md:px-5 h-screen">
         <div className="flex max-w-full flex-col max-md:my-10">
           <Header />
-          <div className="rounded shadow bg-white self-stretch flex w-full flex-col items-stretch mt-11 p-10 max-md:mt-10 max-md:px-5">
-            <div className="text-black text-opacity-90 text-lg leading-6">
+          <div className="rounded shadow bg-white self-stretch flex w-96 flex-col items-stretch mt-11 p-10 max-md:mt-10 max-md:px-5">
+            <div className="text-black text-opacity-90 text-[17.7px] leading-6">
               Connectez-vous en tant que Admin
             </div>
             <div className="holderDiv flex flex-col gap-5">
-              <input
-                type="email"
+              <FormInput
                 id="email"
-                value={email}
-                className="flex shrink-0 h-[46px] flex-col mt-2 border-b-[1.333px] border-b-neutral-400 border-b-opacity-20 border-solid py-2 text-xl mb-5"
+                type="email"
+                placeholder="E-mail"
                 onChange={(e) => setEmail(e.target.value)}
-                placeholder="Email"
               />
-              <input
-                type="password"
+              <FormInput
                 id="password"
-                value={password}
-                className="flex shrink-0 h-[45px] flex-col mt-1.5 border-b-[1.333px] border-b-neutral-400 border-b-opacity-20 border-solid py-2 text-xl"
-                onChange={(e) => setPassword(e.target.value)}
+                type="password"
                 placeholder="Mot de passe"
+                onChange={(e) => setPassword(e.target.value)}
               />
             </div>
-            <span className="flex items-center justify-between gap-3.5 mt-8">
-              <input
-                type="checkbox"
-                className="flex w-6 shrink-0 h-6 flex-col rounded-sm border-[2.667px] border-solid border-neutral-400"
-              />
-              <div className="text-black text-opacity-90 text-xl leading-7 self-center grow shrink basis-auto my-auto">
-                <p className="text-lg">Gardez-moi connecté</p>
-              </div>
-            </span>
-            <button
-              className="text-white text-center text-lg font-medium leading-7 whitespace-nowrap justify-center items-center bg-zinc-700 mt-9 px-16 py-3 rounded-md max-md:px-5 hover:bg-zinc-900"
+            <Checkbox label="Gardez-moi connecté" />
+            <Button
               disabled={!email || !password}
               onClick={handleSubmit}
               loading={loading}
-            >
-              Se connecter
-            </button>
+              value={'Se Connecter'}
+            ></Button>
           </div>
           <Link
             to="/mot-de-passe-oubliee"

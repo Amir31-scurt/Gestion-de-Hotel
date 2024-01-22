@@ -1,15 +1,22 @@
-import React from 'react';
+import React, { useEffect, useState } from 'react';
 import { NavLink } from 'react-router-dom';
 import Menu from './Menu';
 import Elements from './Utils';
 import { TbPointFilled } from 'react-icons/tb';
 import { Avatar } from 'primereact/avatar';
 import User from '../../assets/user.png';
+import { getUserDetails } from '../../util/GetUser';
 export default function Sidebar() {
+  const [user, setUser] = useState();
+
+  useEffect(() => {
+    const userDetails = getUserDetails();
+    setUser(userDetails);
+  }, []);
   return (
     <div className="h-screen w-1/5 max-lg:w-full max-lg:bottom-0 max-lg:h-fit sideBarCompo fixed">
-      <div className="flex flex-col max-lg:flex-row justify-center max-lg:justify-between">
-        <div className="flex items-center justify-start ps-5 gap-3 mt-3 ">
+      <div className="flex gap-5 flex-col max-lg:flex-row justify-center max-lg:justify-between">
+        <div className="flex items-center justify-start ps-5 gap-3 mt-3 max-lg:mt-0">
           <div className="nom">
             <span className="self-center flex items-stretch gap-5 max-lg:mt-0">
               <img
@@ -30,7 +37,7 @@ export default function Sidebar() {
         <div className="max-lg:mt-0 longuer">
           {/***=========== Main-Menu ===========***/}
           <div className="flex-col max-lg:flex-row flex">
-            <div>
+            <div className="mb-5">
               <h1 className="text-gray-200 ps-5 max-lg:hidden">Principal</h1>
             </div>
             {Elements.map((elem, index) => (
@@ -50,11 +57,18 @@ export default function Sidebar() {
               style={{ width: '45px', height: '45px' }}
             />
             <div className="text-gray-400">
-              <p className="font-bold text-gray-300">El Amir</p>
-              <div className="flex items-center gap-2">
-                <div className="ponite"></div>
-                <p className="text-sm text-gray-500">en ligne</p>
-              </div>
+              {user && (
+                <>
+                  <p className="font-bold text-gray-300">{user.name}</p>
+                  <div className="flex items-center gap-2">
+                    <span className="relative flex h-3 w-3">
+                      <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-green-400 opacity-75"></span>
+                      <span className="relative inline-flex rounded-full h-3 w-3 bg-green-500"></span>
+                    </span>
+                    <p className="text-sm text-gray-500">en ligne</p>
+                  </div>
+                </>
+              )}
             </div>
           </div>
         </div>

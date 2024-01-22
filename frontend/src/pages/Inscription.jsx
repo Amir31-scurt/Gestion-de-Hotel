@@ -6,6 +6,7 @@ import { Checkbox } from '../utils/Checkbox';
 import { getErrorMessage } from '../util/GetError';
 import AuthServices from '../services/AuthServices';
 import { message } from 'antd';
+import { Button } from '../utils/Button';
 
 export default function Inscription() {
   const [fullName, setName] = useState('');
@@ -64,15 +65,12 @@ export default function Inscription() {
                 onChange={(e) => setPassword(e.target.value)}
               />
               <Checkbox label="Accepter les termes et la politique" />
-              <button
-                type="submit"
-                className="text-white text-center text-lg font-medium leading-7 whitespace-nowrap justify-center items-center bg-neutral-600 mt-9 px-16 py-3 rounded-md max-md:px-5"
+              <Button
                 disabled={!email || !password || !fullName}
                 onClick={handleSignUp}
                 loading={loading}
-              >
-                S'inscrire
-              </button>
+                value={`S'inscrire`}
+              ></Button>
             </div>
           </span>
           <button className="text-amber-300 text-center text-xl leading-7 self-center whitespace-nowrap mt-7">

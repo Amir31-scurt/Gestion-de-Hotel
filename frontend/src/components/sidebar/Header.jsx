@@ -29,9 +29,9 @@ export default function Header() {
   };
   const getHeaderTitle = () => {
     switch (path) {
-      case '/main/dashboard':
+      case '/dashboard':
         return 'Dashboard';
-      case '/main/listhotels':
+      case '/listhotels':
         return 'Liste des hôtels';
       // Add more cases for other routes if needed
       default:
@@ -40,20 +40,20 @@ export default function Header() {
   };
   return (
     <header className="bg-white shadow fixed">
-      <div className=" w-[80vw] max-lg:w-[98vw] py-3 flex justify-between px-8 items-center">
+      <div className=" w-[80vw] max-lg:w-[98vw] py-3 flex justify-between px-8 items-center max-lg:gap-5">
         <h4 className="text-2xl font-medium leading-tight text-gray-900">
           {getHeaderTitle()}
         </h4>
         <div className="flex justify-between gap-3">
           <div className="flex items-center">
             <div className="flex border-2 rounded-full">
-              <span className="p-input-icon-left flex items-center w-64">
+              <span className="p-input-icon-left flex items-center w-64 max-lg:w-fit">
                 <div className="ps-3">
                   <IoSearch className="text-xl" />
                 </div>
                 <InputText
                   placeholder="Recherche..."
-                  className="py-1 text-base px-2 rounded-full w-64 focus:outline-none"
+                  className="py-1 text-base px-2 rounded-full w-full focus:outline-none"
                 />
               </span>
             </div>
@@ -62,7 +62,11 @@ export default function Header() {
             <button>
               <MdNotificationsNone className="text-2xl" />
             </button>
-
+            <img
+              src={user?.avatar || User}
+              alt="User Avatar"
+              className="h-10 w-10 rounded-full"
+            />
             <button onClick={handleLougout}>
               <RxExit className="text-2xl" />
             </button>

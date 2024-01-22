@@ -10,7 +10,7 @@ import MotDePasseOubliee from './MotDePasseOubliee';
 export default function ProtectedRoutes() {
   const router = createBrowserRouter([
     {
-      path: '/',
+      index: true,
       element: <Connexion />,
     },
     {
@@ -22,10 +22,11 @@ export default function ProtectedRoutes() {
       element: <MotDePasseOubliee />,
     },
     {
-      path: '/main',
+      path: '/',
       element: <Template />,
       children: [
         {
+          index: true,
           path: 'dashboard',
           element: <Dashboard />,
         },
@@ -35,6 +36,10 @@ export default function ProtectedRoutes() {
         },
       ],
     },
+    // {
+    //   path: '*', // Fallback for unmatched paths
+    //   element: <NotFound />,
+    // },
   ]);
 
   return <RouterProvider router={router} />;

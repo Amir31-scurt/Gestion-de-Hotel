@@ -6,12 +6,12 @@ const Elements = [
   {
     icone: <MdDashboard className="text-3xl" />,
     text: 'Dashboard',
-    link: 'dashboard',
+    link: '/dashboard',
   },
   {
     icone: <HiComputerDesktop className="text-3xl" />,
     text: 'Liste des hôtels ',
-    link: 'listhotels',
+    link: '/listhotels',
   },
 ];
 

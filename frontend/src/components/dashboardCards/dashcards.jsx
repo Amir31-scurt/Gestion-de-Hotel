@@ -67,7 +67,7 @@ const Dashcards = () => {
             key={index}
             className="justify-center shadow-sm bg-white grow w-full pl-5 pr-20 py-5 rounded-2xl max-md:max-w-full max-md:mt-10 max-md:px-5"
           >
-            <header className="flex max-lg:items-center">
+            <header className="flex max-lg:items-center max-lg:gap-5">
               <div className="flex flex-col items-stretch w-16">
                 <span
                   className={`flex justify-center text-white text-opacity-90 text-center leading-6 whitespace-nowrap items-center aspect-square w-full rounded-full max-lg:px-3 ${item.bg}`}
