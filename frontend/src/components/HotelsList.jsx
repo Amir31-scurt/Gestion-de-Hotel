@@ -259,22 +259,26 @@ export default function HotelsList() {
                     <div className="flex items-center justify-end mt-4">
                       <button
                         type="submit"
-                        className="bg-neutral-600 text-white active:bg-neutral-500 font-bold uppercase text-sm px-6 py-3 rounded shadow hover:shadow-lg outline-none focus:outline-none mb-1 flex items-center justify-center flex gap-3"
+                        className="bg-neutral-600 text-white active:bg-neutral-500 font-bold uppercase text-sm px-6 py-3 rounded shadow hover:shadow-lg outline-none focus:outline-none mb-1 flex items-center justify-center"
                         disabled={loading} // Disable button when loading
                         onClick={handleSubmit}
                       >
-                        {loading && (
-                          <Bars
-                            height="25"
-                            width="25"
-                            color="#fff"
-                            ariaLabel="bars-loading"
-                            wrapperStyle={{}}
-                            wrapperClass=""
-                            visible={true}
-                          />
+                        {loading ? (
+                          <div className="flex gap-3 items-center">
+                            <Bars
+                              height="25"
+                              width="25"
+                              color="#fff"
+                              ariaLabel="bars-loading"
+                              wrapperStyle={{}}
+                              wrapperClass=""
+                              visible={true}
+                            />
+                            <p>Chargement...</p>
+                          </div>
+                        ) : (
+                          'Enregistrer'
                         )}
-                        {loading ? 'Chargement...' : 'Enregistrer'}
                       </button>
                     </div>
                   </div>
