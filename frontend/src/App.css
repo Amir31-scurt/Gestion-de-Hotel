@@ -40,6 +40,11 @@
 .cardsHot {
   display: flex;
 }
+.img-card img {
+  height: 190px;
+  width: 100%;
+  object-fit: cover;
+}
 @media (max-width: 1024px) {
   .sideBarCompo .texto {
     display: none;
@@ -47,4 +52,7 @@
   .sideBarCompo .active h2 {
     display: block;
   }
+}
+.route-transition {
+  transition: opacity 0.3s ease-in;
 }

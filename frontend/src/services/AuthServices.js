@@ -9,9 +9,18 @@ const loginUser = (data) => {
   return axios.post(SERVER_URL + '/login', data);
 };
 
+const forgotPassword = (data) => {
+  return axios.post(SERVER_URL + '/forgotPassword', data);
+};
+const resetPassword = ({ id, token, password }) => {
+  return axios.post(`${SERVER_URL}/resetPassword/${id}/${token}`, { password });
+};
+
 const AuthServices = {
   registerUser,
   loginUser,
+  forgotPassword,
+  resetPassword,
 };
 
 export default AuthServices;

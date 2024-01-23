@@ -34,9 +34,9 @@ export default function HotelCard() {
           return (
             <div
               key={hotel?._id}
-              className="flex flex-col rounded-md shadow bg-white"
+              className="flex flex-col rounded-md shadow bg-white crd"
             >
-              <div className="imgcontainer">
+              <div className="img-card">
                 <img
                   src={`${serverUrl}/api/uploads/${hotel?.imageHotel}`}
                   className="object-contain object-center overflow-hidden rounded-t-md"

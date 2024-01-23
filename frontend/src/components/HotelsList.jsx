@@ -6,6 +6,7 @@ import { getErrorMessage } from '../util/GetError';
 import { message } from 'antd';
 import HotelServices from '../services/HotelServices';
 import { getUserDetails } from '../util/GetUser';
+import { Bars } from 'react-loader-spinner';
 
 export default function HotelsList() {
   const [isModalOpen, setIsModalOpen] = useState(false);
@@ -98,7 +99,7 @@ export default function HotelsList() {
 
   return (
     <div>
-      <div className="flex items-center justify-between bg-white shadow fixed mt-[61px] w-full max-w-7xl max-lg:pe-5 pe-20">
+      <div className="flex items-center justify-between bg-white shadow fixed mt-[61px] w-[80vw] max-lg:w-[100vw] max-w-7xl max-lg:pe-8 pe-8">
         <div className="flex items-center gap-2 max-w-7xl py-6 px-4 sm:px-6 lg:px-8">
           <p className="text-2xl text-gray-900">
             Hôtels{' '}
@@ -220,8 +221,7 @@ export default function HotelsList() {
                           Devise
                         </label>
                         <select
-                          className="block appearance-none w-full bg-white border border-gray-400 hover:border-gray-500 px-4 py-2 pr-8 rounded shadow leading-tight focus
-:outline-none focus:shadow-outline"
+                          className="block w-full bg-white border px-4 py-2 pr-8 rounded leading-tight focus:outline-none"
                           id="currency"
                           value={deviceHotel}
                           onChange={(e) => setDeviceHotel(e.target.value)}
@@ -259,17 +259,20 @@ export default function HotelsList() {
                     <div className="flex items-center justify-end mt-4">
                       <button
                         type="submit"
-                        className="bg-neutral-600 text-white active:bg-neutral-500 font-bold uppercase text-sm px-6 py-3 rounded shadow hover:shadow-lg outline-none focus:outline-none mb-1 flex items-center justify-center"
+                        className="bg-neutral-600 text-white active:bg-neutral-500 font-bold uppercase text-sm px-6 py-3 rounded shadow hover:shadow-lg outline-none focus:outline-none mb-1 flex items-center justify-center flex gap-3"
                         disabled={loading} // Disable button when loading
                         onClick={handleSubmit}
                       >
                         {loading && (
-                          <svg
-                            className="animate-spin h-5 w-5 mr-3 ..."
-                            viewBox="0 0 24 24"
-                          >
-                            {/* Spinner SVG path here */}
-                          </svg>
+                          <Bars
+                            height="25"
+                            width="25"
+                            color="#fff"
+                            ariaLabel="bars-loading"
+                            wrapperStyle={{}}
+                            wrapperClass=""
+                            visible={true}
+                          />
                         )}
                         {loading ? 'Chargement...' : 'Enregistrer'}
                       </button>

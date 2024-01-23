@@ -6,6 +6,7 @@ import Template from '../layouts/Template';
 import Dashboard from '../components/Dashboard';
 import HotelsList from '../components/HotelsList';
 import MotDePasseOubliee from './MotDePasseOubliee';
+import ResetPassword from './ResetPassword';
 
 export default function ProtectedRoutes() {
   const router = createBrowserRouter([
@@ -20,6 +21,10 @@ export default function ProtectedRoutes() {
     {
       path: '/mot-de-passe-oubliee',
       element: <MotDePasseOubliee />,
+    },
+    {
+      path: '/reset-mot-de-passe/:id/:token',
+      element: <ResetPassword />,
     },
     {
       path: '/',
