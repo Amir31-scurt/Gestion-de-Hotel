@@ -24,7 +24,7 @@
     "react-router-dom": "^6.21.2",
     "react-transition-group": "^4.4.5",
     "rsuite": "^5.50.0",
-    "vite-plugin-rewrite-all": "^1.0.1"
+    "vite-plugin-rewrite-all": "^1.0.2"
   },
   "devDependencies": {
     "@types/react": "^18.2.43",
