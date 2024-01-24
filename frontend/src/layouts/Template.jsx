@@ -13,7 +13,7 @@ export default function Template() {
     setUser(userDetails);
   }, []);
 
-  if (!user) {
+  if (!user && location.pathname !== '/') {
     navigate('/');
   }
   return (

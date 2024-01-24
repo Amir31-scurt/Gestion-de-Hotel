@@ -1,5 +1,6 @@
 import React from 'react';
 import Dashcards from './dashboardCards/dashcards';
+import { motion } from 'framer-motion';
 
 const useDashboardViewModel = () => {
   // You can include data fetching, business logic, or state management here
@@ -25,12 +26,17 @@ const Dashboard = () => {
   const { welcomeMessage, subTitle } = useDashboardViewModel();
 
   return (
-    <div>
+    <motion.div
+      initial={{ opacity: 0 }}
+      animate={{ opacity: 1 }}
+      exit={{ opacity: 0 }}
+      transition={{ duration: 1 }}
+    >
       <WelcomeMessage message={welcomeMessage} subTitle={subTitle} />
       <div className="cards my-5 px-4 max-lg:px-10">
         <Dashcards />
       </div>
-    </div>
+    </motion.div>
   );
 };
 

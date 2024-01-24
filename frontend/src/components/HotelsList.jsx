@@ -7,6 +7,7 @@ import { message } from 'antd';
 import HotelServices from '../services/HotelServices';
 import { getUserDetails } from '../util/GetUser';
 import { Bars } from 'react-loader-spinner';
+import { motion } from 'framer-motion';
 
 export default function HotelsList() {
   const [isModalOpen, setIsModalOpen] = useState(false);
@@ -98,7 +99,12 @@ export default function HotelsList() {
   }); // Empty dependency array to run only once
 
   return (
-    <div>
+    <motion.div
+      initial={{ opacity: 0 }}
+      animate={{ opacity: 1 }}
+      exit={{ opacity: 0 }}
+      transition={{ duration: 1 }}
+    >
       <div className="flex items-center justify-between bg-white shadow fixed mt-[61px] w-[80vw] max-lg:w-[100vw] max-w-7xl max-lg:pe-8 pe-8">
         <div className="flex items-center gap-2 max-w-7xl py-6 px-4 sm:px-6 lg:px-8">
           <p className="text-2xl text-gray-900">
@@ -288,6 +294,6 @@ export default function HotelsList() {
           </div>
         )}
       </div>
-    </div>
+    </motion.div>
   );
 }

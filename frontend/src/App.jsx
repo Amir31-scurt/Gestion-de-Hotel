@@ -1,18 +1,12 @@
-import { useState } from 'react';
-import reactLogo from './assets/react.svg';
-import viteLogo from '/vite.svg';
 import './App.css';
-import Connexion from './pages/Connexion';
-import Template from './layouts/Template';
-import Inscription from './pages/Inscription';
 import ProtectedRoutes from './pages/ProtectedRoutes';
+import { AnimatePresence } from 'framer-motion';
 
 function App() {
   return (
-    <>
-      {/* <Connexion /> */}
+    <AnimatePresence>
       <ProtectedRoutes />
-    </>
+    </AnimatePresence>
   );
 }
 

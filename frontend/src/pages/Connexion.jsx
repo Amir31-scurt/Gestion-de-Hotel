@@ -62,7 +62,7 @@ function Connexion() {
             <Button
               disabled={!email || !password}
               onClick={handleSubmit}
-              loading={loading}
+              loading={loading ? 'true' : 'false'}
               value={'Se Connecter'}
             ></Button>
           </div>
