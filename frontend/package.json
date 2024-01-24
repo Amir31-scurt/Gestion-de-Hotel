@@ -23,7 +23,8 @@
     "react-loader-spinner": "^6.1.6",
     "react-router-dom": "^6.21.2",
     "react-transition-group": "^4.4.5",
-    "rsuite": "^5.50.0"
+    "rsuite": "^5.50.0",
+    "vite-plugin-rewrite-all": "^1.0.1"
   },
   "devDependencies": {
     "@types/react": "^18.2.43",
