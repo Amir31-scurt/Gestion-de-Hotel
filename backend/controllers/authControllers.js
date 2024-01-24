@@ -70,7 +70,7 @@ async function forgotPassword(req, res) {
 
     var mailOptions = {
       from: 'elamir3131@gmail.com',
-      to: 'mey95646@gmail.com',
+      to: email,
       subject: 'Réinitialisation de mot de passe',
       text: `http://localhost:5173/reset-mot-de-passe/${user._id}/${token}`,
     };
