@@ -1,6 +1,6 @@
 import axios from 'axios';
 
-const SERVER_URL = 'https://gestion-de-hotel.vercel.app/api'; // Adjusted to point to the /api directory
+const SERVER_URL = 'https://gestion-de-hotel.vercel.app/Gestion_Hotel/users'; // Adjusted to point to the /api directory
 
 const registerUser = (data) => {
   return axios.post(`${SERVER_URL}/register`, data); // Removed the extra slash
