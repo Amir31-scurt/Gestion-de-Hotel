@@ -6,9 +6,12 @@ require('dotenv').config();
 const cors = require('cors');
 const authRoutes = require('../backend/routes/authRoutes');
 const AddHotelRoutes = require('../backend/routes/AddHotelRoutes');
+const { default: mongoose } = require('mongoose');
 
 // Connect to the Database
-connectDB();
+mongoose.connect(
+  'mongodb+srv://msarre3124:Amir4144@cluster0.bolmwev.mongodb.net/Gestion_Hotel'
+);
 
 const app = express();
 
