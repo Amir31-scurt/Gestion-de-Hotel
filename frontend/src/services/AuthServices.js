@@ -1,6 +1,6 @@
 import axios from 'axios';
 
-const SERVER_URL = 'https://server-hotel-gest.onrender.com';
+const SERVER_URL = 'https://server-hotel-gest.onrender.com/';
 
 const registerUser = (data) => {
   return axios.post(SERVER_URL + 'api/register', data);
