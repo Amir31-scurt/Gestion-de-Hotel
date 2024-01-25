@@ -3,7 +3,7 @@
   "name": "Gestion-hotel-server",
   "builds": [
     {
-      "src": "./server.js",
+      "src": "backend/server.js",
       "use": "@vercel/node"
     }
   ],
