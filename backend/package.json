@@ -23,5 +23,8 @@
     "nodemailer": "^6.9.8",
     "nodemon": "^3.0.3",
     "vite-plugin-rewrite-all": "^1.0.2"
+  },
+  "devDependencies": {
+    "vercel": "^33.2.0"
   }
 }
