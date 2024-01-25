@@ -40,7 +40,7 @@ function Connexion() {
       <header className="flex w-full flex-col justify-center items-center px-16 max-md:max-w-full max-md:px-5 h-screen">
         <div className="flex max-w-full flex-col max-md:my-10">
           <Header />
-          <div className="rounded shadow bg-white self-stretch flex w-96 flex-col items-stretch mt-11 p-10 max-md:mt-10 max-md:px-5">
+          <div className="rounded shadow bg-white self-stretch flex flex-col items-stretch mt-11 p-10 max-md:mt-10 max-md:px-5">
             <div className="text-black text-opacity-90 text-[17.7px] leading-6">
               Connectez-vous en tant que Admin
             </div>

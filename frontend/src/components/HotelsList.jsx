@@ -54,6 +54,7 @@ export default function HotelsList() {
       const response = await HotelServices.addHotel(formData);
       console.log(response.data);
       message.success("L'hôtel a été ajouté avec succès");
+      getAllHotels();
 
       // Vider les champs
       setNomHotel('');
@@ -79,18 +80,27 @@ export default function HotelsList() {
     setImageHotel(file);
   };
 
+  const getAllHotels = async () => {
+    try {
+      const response = await HotelServices.getHotles();
+      setAllHotels(response.data);
+    } catch (err) {
+      console.log(err);
+      message.error(getErrorMessage(err));
+    }
+  };
+
   useEffect(() => {
-    let user = getUserDetails();
     const getAllHotels = async () => {
       try {
         const response = await HotelServices.getHotles();
-        console.log(response.data);
         setAllHotels(response.data);
       } catch (err) {
         console.log(err);
         message.error(getErrorMessage(err));
       }
     };
+    let user = getUserDetails();
     if (user) {
       getAllHotels();
     } else {
@@ -105,7 +115,7 @@ export default function HotelsList() {
       exit={{ opacity: 0 }}
       transition={{ duration: 1 }}
     >
-      <div className="flex items-center justify-between bg-white shadow fixed mt-[61px] w-[80vw] max-lg:w-[100vw] max-w-7xl max-lg:pe-8 pe-8">
+      <div className="flex items-center justify-between bg-white shadow fixed mt-[61px] w-[80vw] max-lg:w-[100vw] max-w-7xl max-lg:pe-8 pe-8 z-30">
         <div className="flex items-center gap-2 max-w-7xl py-6 px-4 sm:px-6 lg:px-8">
           <p className="text-2xl text-gray-900">
             Hôtels{' '}
@@ -125,7 +135,7 @@ export default function HotelsList() {
       </div>
       <div className="text-start">
         {isModalOpen && (
-          <div className="fixed inset-0 bg-gray-600 bg-opacity-50 overflow-y-auto h-full w-full flex items-center">
+          <div className="fixed inset-0 bg-gray-600 bg-opacity-50 overflow-y-auto h-full w-full flex items-center z-50">
             <div className="mx-auto p-5 border w-[700px] max-md:w-[600px] shadow-lg rounded-md bg-white max-md:h-5/6 max-md:overflow-y-scroll">
               <div className="mt-3">
                 <div className="headerr flex items-center gap-3 border-b-[3px] pb-5 mx-7 border-dotted">

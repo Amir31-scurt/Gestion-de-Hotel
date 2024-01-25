@@ -1,8 +1,6 @@
 import React, { useEffect, useState } from 'react';
-import { NavLink } from 'react-router-dom';
 import Menu from './Menu';
 import Elements from './Utils';
-import { TbPointFilled } from 'react-icons/tb';
 import { Avatar } from 'primereact/avatar';
 import User from '../../assets/user.png';
 import { getUserDetails } from '../../util/GetUser';
@@ -14,7 +12,7 @@ export default function Sidebar() {
     setUser(userDetails);
   }, []);
   return (
-    <div className="h-screen w-1/5 max-lg:w-full max-lg:bottom-0 max-lg:h-fit sideBarCompo fixed">
+    <div className="h-screen z-50 w-1/5 max-lg:w-full max-lg:bottom-0 max-lg:h-fit sideBarCompo fixed">
       <div className="flex gap-5 flex-col max-lg:flex-row justify-center max-lg:justify-between">
         <div className="flex items-center justify-start ps-5 gap-3 mt-3 max-lg:mt-0">
           <div className="nom">

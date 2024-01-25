@@ -18,7 +18,7 @@ const authenticateToken = async (req, res, next) => {
   jwt.verify(token, secretKey, (err, user) => {
     if (err) {
       return res.status(403).send({
-        message: "Le jeton n'est pas valide",
+        message: "Le jeton n'est plus valide, veuillez vous reconnecter",
       });
     }
     req.user = user;

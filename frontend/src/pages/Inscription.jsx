@@ -41,7 +41,7 @@ export default function Inscription() {
       <form className="flex flex-col justify-center items-stretch InscripForm">
         <header className="flex w-full flex-col justify-center items-center px-16 py-12 max-md:max-w-full max-md:px-5  h-screen">
           <Header />
-          <span className="flex w-96 max-w-full flex-col items-stretch max-md:my-10">
+          <span className="flex w-96 max-w-full flex-col items-stretch max-md:my-6">
             <div className="rounded shadow bg-white flex w-full flex-col items-stretch mt-11 px-8 py-9 max-md:mt-10 max-md:px-5">
               <h2 className="text-black text-opacity-90 text-lg leading-6">
                 Inscrivez-vous en tant que Admin
@@ -68,12 +68,12 @@ export default function Inscription() {
               <Button
                 disabled={!email || !password || !fullName}
                 onClick={handleSignUp}
-                loading={loading}
+                loading={loading ? 'true' : 'false'}
                 value={`S'inscrire`}
               ></Button>
             </div>
           </span>
-          <button className="text-amber-300 text-center text-xl leading-7 self-center whitespace-nowrap mt-7">
+          <button className="text-amber-300 text-center text-xl leading-7 self-center whitespace-nowrap">
             Vous avez déjà un compte?{' '}
             <Link
               to="/"
