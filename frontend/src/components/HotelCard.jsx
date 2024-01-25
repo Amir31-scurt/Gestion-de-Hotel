@@ -11,7 +11,7 @@ import { CiMenuKebab } from 'react-icons/ci';
 export default function HotelCard({ hotel }) {
   const [allHotels, setAllHotels] = useState([]);
   const [openDropdown, setOpenDropdown] = useState(null); // State to manage dropdown visibility
-  const serverUrl = import.meta.env.VITE_SERVER_URL;
+  const serverUrl = 'https://server-hotel-gest.onrender.com';
   // Confirmation de suppression
   const [isConfirmModalOpen, setIsConfirmModalOpen] = useState(false);
   const [isDetailsModalOpen, setIsDetailsModalOpen] = useState(false);
