@@ -23,11 +23,12 @@ const storage = multer.diskStorage({
 const upload = multer({ storage: storage });
 
 // Middleware configuration
+app.use(cors());
+
+// If you want to limit CORS requests to a specific domain, you can do:
 app.use(
   cors({
     origin: 'https://gestion-de-hotel.vercel.app',
-    methods: ['GET', 'POST', 'PATCH', 'PUT', 'DELETE'],
-    allowedHeaders: ['Content-Type', 'Authorization'],
   })
 );
 
@@ -42,9 +43,7 @@ app.use('/api/hotel', AddHotelRoutes);
 
 // Run the server
 const port = process.env.PORT || 5000;
-app.listen(port, () => {
-  console.log(`Server started, listening on port ${port}`);
-});
+app.listen(3000, () => console.log('Server started'));
 
 process.on('unhandledRejection', (err) => {
   console.error(`An unhandled rejection: ${err.message}`);
