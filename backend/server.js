@@ -23,7 +23,13 @@ const storage = multer.diskStorage({
 const upload = multer({ storage: storage });
 
 // Middleware configuration
-app.use(cors());
+app.use(
+  cors({
+    origin: ['https://gestion-de-hotel.vercel.app'],
+    methods: ['GET', 'POST', 'PUT', 'DELETE', 'PATCH'],
+    credentials: true,
+  })
+);
 app.use(express.json());
 app.use(express.urlencoded({ extended: false }));
 app.use('/api/uploads', express.static('uploads'));
