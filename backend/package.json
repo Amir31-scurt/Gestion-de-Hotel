@@ -5,9 +5,9 @@
   "main": "server.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "server": "nodemon ../backend/server.js",
-    "dev": "nodemon start ./backend/server.js",
-    "start": "node ../backend/server.js",
+    "server": "nodemon backend/server.js",
+    "dev": "nodemon backend/server.js",
+    "start": "node backend/server.js",
     "build": "echo \"No build required\""
   },
   "author": "",
@@ -25,6 +25,7 @@
     "vite-plugin-rewrite-all": "^1.0.2"
   },
   "devDependencies": {
+    "nodemon": "^3.0.3",
     "vercel": "^33.2.0"
   }
 }
