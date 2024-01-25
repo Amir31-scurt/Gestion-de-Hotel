@@ -43,10 +43,10 @@ app.use('/api', authRoutes);
 app.use('/api/hotel', AddHotelRoutes);
 
 // Run the server
-const port = process.env.PORT || 5000;
-app.listen(port, () => {
-  console.log(`Server started, listening on port ${port}`);
-});
+// const port = process.env.PORT || 5000;
+// app.listen(port, () => {
+//   console.log(`Server started, listening on port ${port}`);
+// });
 
 process.on('unhandledRejection', (err) => {
   console.error(`An unhandled rejection: ${err.message}`);
