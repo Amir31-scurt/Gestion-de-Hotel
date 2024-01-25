@@ -26,9 +26,12 @@ const upload = multer({ storage: storage });
 app.use(cors());
 
 // If you want to limit CORS requests to a specific domain, you can do:
+// Middleware configuration
 app.use(
   cors({
     origin: 'https://gestion-de-hotel.vercel.app',
+    credentials: true, // if your frontend needs to send cookies or credentials
+    methods: ['GET', 'POST', 'PUT', 'DELETE', 'OPTIONS'], // Include OPTIONS for preflight
   })
 );
 
