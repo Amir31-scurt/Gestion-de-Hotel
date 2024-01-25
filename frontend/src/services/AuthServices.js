@@ -3,10 +3,10 @@ import axios from 'axios';
 const SERVER_URL = 'https://gestion-de-hotel.vercel.app/';
 
 const registerUser = (data) => {
-  return axios.post(SERVER_URL + '/register', data);
+  return axios.post(SERVER_URL + '/', data);
 };
 const loginUser = (data) => {
-  return axios.post(SERVER_URL + '/login', data);
+  return axios.post(SERVER_URL + '/', data);
 };
 
 const forgotPassword = (data) => {
