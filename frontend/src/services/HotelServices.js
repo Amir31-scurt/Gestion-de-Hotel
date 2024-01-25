@@ -1,15 +1,7 @@
 import axios from 'axios';
 import { getUserDetails } from '../util/GetUser';
 
-const SERVER_URL = 'http://localhost:5000/api/hotel';
-const authHeaders = () => {
-  let userToken = getUserDetails()?.token;
-  return {
-    headers: {
-      Authorization: `Bearer ${userToken}`,
-    },
-  };
-};
+const SERVER_URL = 'https://gestion-de-hotel-x54i.vercel.app/api/hotel';
 
 const addHotel = (data) => {
   return axios.post(SERVER_URL + '/add-Hotel', data, authHeaders());
