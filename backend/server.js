@@ -26,10 +26,10 @@ const upload = multer({ storage: storage });
 app.use(
   cors({
     origin: 'https://gestion-de-hotel.vercel.app',
+    methods: ['GET', 'POST', 'PATCH', 'PUT', 'DELETE'],
+    allowedHeaders: ['Content-Type', 'Authorization'],
   })
 );
-
-app.use(cors());
 
 app.use(express.json());
 app.use(express.urlencoded({ extended: false }));
