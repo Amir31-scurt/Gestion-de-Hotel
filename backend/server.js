@@ -23,7 +23,7 @@ const storage = multer.diskStorage({
 const upload = multer({ storage: storage });
 
 // Middleware configuration
-exp.use(cors());
+express.use(cors());
 
 // If you want to limit CORS requests to a specific domain, you can do:
 // Middleware configuration
