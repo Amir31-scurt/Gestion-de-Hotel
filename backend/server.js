@@ -25,11 +25,11 @@ const upload = multer({ storage: storage });
 // Middleware configuration
 app.use(
   cors({
-    origin: 'https://gestion-de-hotel-server.vercel.app/',
-    methods: ['GET', 'POST', 'PUT', 'DELETE', 'PATCH'],
-    credentials: true,
+    origin: 'https://gestion-de-hotel.vercel.app',
   })
 );
+
+app.use(cors());
 
 app.use(express.json());
 app.use(express.urlencoded({ extended: false }));
