@@ -8,9 +8,8 @@ const authRoutes = require('../backend/routes/authRoutes');
 const AddHotelRoutes = require('../backend/routes/AddHotelRoutes');
 
 // Connect to the Database
+const App = express();
 connectDB();
-
-const app = express();
 
 const storage = multer.diskStorage({
   destination: function (req, res, cb) {
@@ -23,28 +22,28 @@ const storage = multer.diskStorage({
 const upload = multer({ storage: storage });
 
 // Middleware configuration
-express.use(cors());
+App.use(cors());
 
 // If you want to limit CORS requests to a specific domain, you can do:
 // Middleware configuration
-express.use(
+App.use(
   cors({
     origin: 'https://gestion-de-hotel.vercel.app',
   })
 );
 
-express.use(express.json());
-express.use(express.urlencoded({ extended: false }));
-express.use('/api/uploads', express.static('uploads'));
-express.use(upload.single('imageHotel'));
+App.use(express.json());
+App.use(express.urlencoded({ extended: false }));
+App.use('/api/uploads', express.static('uploads'));
+App.use(upload.single('imageHotel'));
 
 // Routes
-express.use('/api', authRoutes);
-express.use('/api/hotel', AddHotelRoutes);
+App.use('/api', authRoutes);
+App.use('/api/hotel', AddHotelRoutes);
 
 // Run the server
 const port = process.env.PORT || 5000;
-express.listen(port, () => {
+App.listen(port, () => {
   console.log(`Server started, listening on port ${port}`);
 });
 
