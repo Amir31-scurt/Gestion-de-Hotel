@@ -1,6 +1,6 @@
 import axios from 'axios';
 
-const SERVER_URL = 'http://localhost:5000/api';
+const SERVER_URL = 'https://gestion-de-hotel-server.vercel.app/';
 
 const registerUser = (data) => {
   return axios.post(SERVER_URL + '/register', data);
