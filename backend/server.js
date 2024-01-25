@@ -30,8 +30,6 @@ app.use(cors());
 app.use(
   cors({
     origin: 'https://gestion-de-hotel.vercel.app',
-    credentials: true, // if your frontend needs to send cookies or credentials
-    methods: ['GET', 'POST', 'PUT', 'DELETE', 'OPTIONS'], // Include OPTIONS for preflight
   })
 );
 
