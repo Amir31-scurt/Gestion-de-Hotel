@@ -9,6 +9,9 @@ const AddHotelRoutes = require('../backend/routes/AddHotelRoutes');
 
 // Connect to the Database
 connectDB();
+mongodb.connect(
+  'mongodb+srv://msarre3124:Amir4144@cluster0.bolmwev.mongodb.net/Gestion_Hotel'
+);
 
 const app = express();
 
