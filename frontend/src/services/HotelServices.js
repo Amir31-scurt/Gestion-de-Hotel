@@ -3,6 +3,15 @@ import { getUserDetails } from '../util/GetUser';
 
 const SERVER_URL = 'https://server-hotel-gest.onrender.com/api/hotel';
 
+const authHeaders = () => {
+  let userToken = getUserDetails()?.token;
+  return {
+    headers: {
+      Authorization: `Bearer ${userToken}`,
+    },
+  };
+};
+
 const addHotel = (data) => {
   return axios.post(SERVER_URL + '/add-Hotel', data, authHeaders());
 };
