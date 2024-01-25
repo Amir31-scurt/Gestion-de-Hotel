@@ -1,7 +1,7 @@
 import axios from 'axios';
 import { getUserDetails } from '../util/GetUser';
 
-const SERVER_URL = 'https://gestion-de-hotel-x54i.vercel.app/api/hotel';
+const SERVER_URL = 'https://server-hotel-gest.onrender.com/api/hotel';
 
 const addHotel = (data) => {
   return axios.post(SERVER_URL + '/add-Hotel', data, authHeaders());
