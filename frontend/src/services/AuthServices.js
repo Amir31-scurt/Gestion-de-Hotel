@@ -1,19 +1,17 @@
 import axios from 'axios';
 
-const SERVER_URL = 'https://gestion-de-hotel.vercel.app/Gestion_Hotel/'; // Adjusted to point to the /api directory
+const SERVER_URL = 'http://localhost:5000/api';
 
 const registerUser = (data) => {
-  return axios.post(`${SERVER_URL}/register`, data); // Removed the extra slash
+  return axios.post(SERVER_URL + '/register', data);
 };
-
 const loginUser = (data) => {
-  return axios.post(`${SERVER_URL}/login`, data); // Removed the extra slash
+  return axios.post(SERVER_URL + '/login', data);
 };
 
 const forgotPassword = (data) => {
-  return axios.post(`${SERVER_URL}/forgotPassword`, data); // Removed the extra slash
+  return axios.post(SERVER_URL + '/forgotPassword', data);
 };
-
 const resetPassword = ({ id, token, password }) => {
   return axios.post(`${SERVER_URL}/resetPassword/${id}/${token}`, { password });
 };
