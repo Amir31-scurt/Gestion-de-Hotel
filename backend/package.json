@@ -5,9 +5,9 @@
   "main": "server.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "server": "nodemon ./server.js",
-    "dev": "npx nodemon ./server.js",
-    "start": "node ./server.js",
+    "server": "nodemon backend/server.js",
+    "dev": "npx nodemon backend/server.js",
+    "start": "node backend/server.js",
     "build": "echo \"No build required\""
   },
   "author": "",

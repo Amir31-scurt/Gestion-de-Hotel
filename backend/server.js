@@ -1,4 +1,4 @@
-const express = require('express');
+// const express = require('express');
 const path = require('path');
 const multer = require('multer');
 const connectDB = require('../backend/config/db');
@@ -10,7 +10,7 @@ const AddHotelRoutes = require('../backend/routes/AddHotelRoutes');
 // Connect to the Database
 connectDB();
 
-const app = express();
+// const app = express();
 
 const storage = multer.diskStorage({
   destination: function (req, res, cb) {
@@ -33,7 +33,7 @@ app.use(
   })
 );
 
-app.use(express.json());
+// app.use(express.json());
 app.use(express.urlencoded({ extended: false }));
 app.use('/api/uploads', express.static('uploads'));
 app.use(upload.single('imageHotel'));
