@@ -13,7 +13,7 @@ const forgotPassword = (data) => {
   return axios.post(SERVER_URL + 'api/forgotPassword', data);
 };
 const resetPassword = ({ id, token, password }) => {
-  return axios.post(`${SERVER_URL}/resetPassword/${id}/${token}`, {
+  return axios.post(`${SERVER_URL}api/resetPassword/${id}/${token}`, {
     password,
   });
 };
