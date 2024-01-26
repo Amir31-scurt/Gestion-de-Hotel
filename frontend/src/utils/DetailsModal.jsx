@@ -6,7 +6,7 @@ import { motion } from 'framer-motion';
 
 export default function DetailsModal({ isOpen, onClose, hotelDetails }) {
   if (!isOpen) return null;
-  const serverUrl = import.meta.env.VITE_SERVER_URL;
+  const serverUrl = 'https://gestion-de-hotel.vercel.app';
 
   return (
     <motion.div

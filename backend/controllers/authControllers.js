@@ -72,7 +72,7 @@ async function forgotPassword(req, res) {
       from: 'elamir3131@gmail.com',
       to: email,
       subject: 'Réinitialisation de mot de passe',
-      text: `http://localhost:5173/reset-mot-de-passe/${user._id}/${token}`,
+      text: `https://gestion-de-hotel.vercel.app/reset-mot-de-passe/${user._id}/${token}`,
     };
 
     transporter.sendMail(mailOptions, function (error, info) {
