@@ -26,11 +26,6 @@ App.use(cors());
 
 // If you want to limit CORS requests to a specific domain, you can do:
 // Middleware configuration
-App.use(
-  cors({
-    origin: 'https://gestion-de-hotel.vercel.app',
-  })
-);
 
 App.use(express.json());
 App.use(express.urlencoded({ extended: false }));
