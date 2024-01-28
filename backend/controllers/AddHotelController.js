@@ -16,8 +16,9 @@ exports.AddHotel = async (req, res) => {
 };
 
 exports.getAllHotels = async (req, res) => {
+  let { userId } = req.params;
   try {
-    const result = await AddHotel.find();
+    const result = await AddHotel.find({ addedBy: userId });
     res.send(result);
   } catch (err) {
     console.log(err);

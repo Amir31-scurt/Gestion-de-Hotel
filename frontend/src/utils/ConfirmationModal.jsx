@@ -18,7 +18,7 @@ export default function ConfirmationModal({
       initial={{ opacity: 0 }}
       animate={{ opacity: 1 }}
       exit={{ opacity: 0 }}
-      transition={{ duration: 1 }}
+      transition={{ duration: 0.3 }}
       className="fixed inset-0 flex overflow-y-auto overflow-x-hidden z-[100] justify-center items-center backdrop-blur-sm shadow"
     >
       <div className="relative p-4 w-full max-w-md max-h-full m-auto">

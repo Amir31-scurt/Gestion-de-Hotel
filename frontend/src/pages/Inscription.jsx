@@ -7,6 +7,7 @@ import { getErrorMessage } from '../util/GetError';
 import AuthServices from '../services/AuthServices';
 import { message } from 'antd';
 import { Button } from '../utils/Button';
+import { Bars } from 'react-loader-spinner';
 
 export default function Inscription() {
   const [fullName, setName] = useState('');
@@ -69,7 +70,24 @@ export default function Inscription() {
                 disabled={!email || !password || !fullName}
                 onClick={handleSignUp}
                 loading={loading ? 'true' : 'false'}
-                value={`S'inscrire`}
+                value={
+                  loading ? (
+                    <div className="flex gap-3 items-center">
+                      <Bars
+                        height="25"
+                        width="25"
+                        color="#fff"
+                        ariaLabel="bars-loading"
+                        wrapperStyle={{}}
+                        wrapperClass=""
+                        visible={true}
+                      />
+                      <p>Chargement...</p>
+                    </div>
+                  ) : (
+                    `S'inscrire`
+                  )
+                }
               ></Button>
             </div>
           </span>

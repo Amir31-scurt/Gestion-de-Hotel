@@ -6,7 +6,7 @@ import { getErrorMessage } from '../util/GetError';
 import HotelEditModal from '../utils/HotelEditModal';
 import ConfirmationModal from '../utils/ConfirmationModal';
 import DetailsModal from '../utils/DetailsModal';
-import { CiMenuKebab } from 'react-icons/ci';
+import { MdMoreVert } from 'react-icons/md';
 
 export default function HotelCard({ hotel }) {
   const [allHotels, setAllHotels] = useState([]);
@@ -22,24 +22,21 @@ export default function HotelCard({ hotel }) {
   const [isEditModalOpen, setIsEditModalOpen] = useState(false);
   const [selectedHotelForEdit, setSelectedHotelForEdit] = useState(null);
 
+  let user = getUserDetails();
   const getAllHotels = async () => {
     try {
-      const response = await HotelServices.getHotles();
+      const response = await HotelServices.getHotles(user?.userId);
       setAllHotels(response.data);
     } catch (err) {
       console.log(err);
       message.error(getErrorMessage(err));
     }
   };
-
   useEffect(() => {
-    let user = getUserDetails();
-    if (user) {
+    if (user && user?.userId) {
       getAllHotels();
-    } else {
-      console.log('Une erreur est survenue');
     }
-  }); // Empty dependency array to run only once
+  }, []);
 
   const toggleDropdown = (hotelId) => {
     if (openDropdown === hotelId) {
@@ -53,8 +50,8 @@ export default function HotelCard({ hotel }) {
     try {
       const response = await HotelServices.deleteHotel(hotelId);
       message.success(`L'hôtel a été supprimé avec succès`);
-      getAllHotels();
       setIsConfirmModalOpen(false);
+      getAllHotels();
     } catch (error) {
       console.log(error);
       message.error(getErrorMessage(error));
@@ -65,17 +62,20 @@ export default function HotelCard({ hotel }) {
   const openDetailsModal = (hotelDetails) => {
     setSelectedHotelDetails(hotelDetails);
     setIsDetailsModalOpen(true);
+    toggleDropdown(false);
   };
-
+  // Confirmation de suppression
   const openConfirmModal = (hotelId) => {
     setSelectedHotelId(hotelId);
     setIsConfirmModalOpen(true);
+    toggleDropdown(false);
   };
 
   // Modification
   const openEditModal = (hotelData) => {
     setSelectedHotelForEdit(hotelData);
     setIsEditModalOpen(true);
+    toggleDropdown(false);
   };
 
   return (
@@ -93,10 +93,10 @@ export default function HotelCard({ hotel }) {
                 alt="Hotel Image"
               />
               <button
-                className="dropdown-button absolute top-0 right-0 m-3 bg-white p-2 rounded bg-opacity-30 opacity-0 hover:opacity-100"
+                className="dropdown-button absolute top-0 right-0 m-3 bg-white p-2 rounded"
                 onClick={() => toggleDropdown(hotel?._id)}
               >
-                <CiMenuKebab />
+                <MdMoreVert />
               </button>
               <ConfirmationModal
                 isOpen={isConfirmModalOpen}

@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import { FaArrowLeft } from 'react-icons/fa';
-// import { AiFillPicture } from 'react-icons/ai';
+import { AiFillPicture } from 'react-icons/ai';
 import { Bars } from 'react-loader-spinner'; // Import Bars from react-loader-spinner if you are using it for loading
 import { motion } from 'framer-motion';
 import HotelServices from '../services/HotelServices';
@@ -15,12 +15,18 @@ export default function HotelEditModal({ isOpen, onClose, hotelData }) {
   const [telephoneHotel, setTelephoneHotel] = useState('');
   const [priceHotel, setPriceHotel] = useState('');
   const [deviceHotel, setDeviceHotel] = useState('F XOF');
+  const [imageHotel, setImageHotel] = useState('');
+  const [imagePreview, setImagePreview] = useState(null);
   const [loading, setLoading] = useState(false);
 
   // Handle file change for photo upload
-  // const handleFileChange = (event) => {
-
-  // };
+  const handleFileChange = (event) => {
+    const file = event.target.files[0];
+    if (file) {
+      setImageHotel(file);
+      setImagePreview(URL.createObjectURL(file));
+    }
+  };
 
   // Set initial values when the modal opens
   useEffect(() => {
@@ -31,32 +37,41 @@ export default function HotelEditModal({ isOpen, onClose, hotelData }) {
       setTelephoneHotel(hotelData.telephoneHotel);
       setPriceHotel(hotelData.priceHotel);
       setDeviceHotel(hotelData.deviceHotel);
+      setImageHotel(hotelData.imageHotel);
+      setImagePreview(hotelData.imageHotel);
     }
   }, [hotelData]);
 
   const handleSubmit = async (e) => {
     e.preventDefault();
     setLoading(true);
+
+    const formData = new FormData();
+    formData.append('nomHotel', nomHotel);
+    formData.append('adresseHotel', adresseHotel);
+    formData.append('emailHotel', emailHotel);
+    formData.append('telephoneHotel', telephoneHotel);
+    formData.append('priceHotel', priceHotel);
+    formData.append('deviceHotel', deviceHotel);
+    // Append 'imageHotel' only if it's a file
+    if (imageHotel && typeof imageHotel === 'object') {
+      formData.append('imageHotel', imageHotel);
+    }
+
     try {
-      const data = {
-        nomHotel: nomHotel,
-        adresseHotel: adresseHotel,
-        emailHotel: emailHotel,
-        telephoneHotel: telephoneHotel,
-        priceHotel: priceHotel,
-        deviceHotel: deviceHotel,
-      };
-      const response = await HotelServices.updateHotel(hotelData?._id, data);
+      const response = await HotelServices.updateHotel(
+        hotelData?._id,
+        formData
+      );
       message.success(
         `L'hôtel ${hotelData?.nomHotel} a été modifié avec succès`
       );
-      setLoading(false);
-      onClose(onClose);
+      onClose();
     } catch (error) {
       console.error(error);
-      setLoading(false);
-
       message.error(getErrorMessage(error));
+    } finally {
+      setLoading(false);
     }
   };
 
@@ -194,7 +209,7 @@ export default function HotelEditModal({ isOpen, onClose, hotelData }) {
               </div>
 
               {/* Photo Upload Input */}
-              {/* <div className="mb-4">
+              <div className="mb-4">
                 <label
                   className="block text-gray-700 text-sm font-bold mb-2"
                   htmlFor="photo"
@@ -203,13 +218,21 @@ export default function HotelEditModal({ isOpen, onClose, hotelData }) {
                 </label>
                 <div className="flex items-center justify-center w-full">
                   <label className="flex flex-col w-full h-44 border-2 rounded hover:bg-gray-100 hover:border-gray-300">
-                    <div className="flex flex-col items-center text-gray-400 justify-center h-full">
-                      <AiFillPicture className="text-4xl" />
-                      <p className="p-0 m-0">Ajouter une photo</p>
-                    </div>
+                    {imagePreview ? (
+                      <img
+                        src={imagePreview}
+                        alt="Preview"
+                        className="w-full h-full object-cover rounded"
+                      />
+                    ) : (
+                      <div className="flex flex-col items-center text-gray-400 justify-center h-full">
+                        <AiFillPicture className="text-4xl" />
+                        <p className="p-0 m-0">Ajouter une photo</p>
+                      </div>
+                    )}
                     <input
                       type="file"
-                      className="opacity-0"
+                      className="opacity-0 absolute"
                       id="photo"
                       name="imageHotel"
                       onChange={handleFileChange}
@@ -217,7 +240,7 @@ export default function HotelEditModal({ isOpen, onClose, hotelData }) {
                     />
                   </label>
                 </div>
-              </div> */}
+              </div>
 
               {/* Submit Button */}
               <div className="flex items-center justify-end mt-4">

@@ -7,6 +7,7 @@ import { getErrorMessage } from '../util/GetError';
 import { FormInput } from '../utils/FormInput';
 import { Button } from '../utils/Button';
 import { Checkbox } from '../utils/Checkbox';
+import { Bars } from 'react-loader-spinner';
 
 function Connexion() {
   const [email, setEmail] = useState('');
@@ -63,7 +64,24 @@ function Connexion() {
               disabled={!email || !password}
               onClick={handleSubmit}
               loading={loading ? 'true' : 'false'}
-              value={'Se Connecter'}
+              value={
+                loading ? (
+                  <div className="flex gap-3 items-center">
+                    <Bars
+                      height="25"
+                      width="25"
+                      color="#fff"
+                      ariaLabel="bars-loading"
+                      wrapperStyle={{}}
+                      wrapperClass=""
+                      visible={true}
+                    />
+                    <p>Chargement...</p>
+                  </div>
+                ) : (
+                  'Se connecter'
+                )
+              }
             ></Button>
           </div>
           <Link

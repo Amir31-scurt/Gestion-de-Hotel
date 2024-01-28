@@ -10,6 +10,11 @@ const hotelSchema = new Schema(
     priceHotel: { type: String, required: true },
     deviceHotel: { type: String, required: true },
     imageHotel: { type: String },
+    addedBy: {
+      ref: 'User',
+      type: Schema.Types.ObjectId,
+      required: false,
+    },
   },
   {
     timestamps: true,
