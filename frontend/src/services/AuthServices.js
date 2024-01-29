@@ -17,12 +17,27 @@ const resetPassword = ({ id, token, password }) => {
     password,
   });
 };
+const logoutUser = () => {
+  const userJson = localStorage.getItem('User');
+  const user = JSON.parse(userJson);
+  const token = user?.token;
+  return axios.post(
+    SERVER_URL + 'api/logout',
+    {},
+    {
+      headers: {
+        Authorization: `Bearer ${token}`,
+      },
+    }
+  );
+};
 
 const AuthServices = {
   registerUser,
   loginUser,
   forgotPassword,
   resetPassword,
+  logoutUser,
 };
 
 export default AuthServices;

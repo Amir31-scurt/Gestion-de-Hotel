@@ -46,6 +46,22 @@ const HotelsList = () => {
     }
   };
 
+  let user = getUserDetails();
+  const getAllHotels = async () => {
+    try {
+      const response = await HotelServices.getHotles(user?.userId);
+      setAllHotels(response.data);
+    } catch (err) {
+      console.log(err);
+      message.error(getErrorMessage(err));
+    }
+  };
+  useEffect(() => {
+    if (user && user?.userId) {
+      getAllHotels();
+    }
+  }, []);
+
   const handleSubmit = async () => {
     const userId = getUserDetails()?.userId;
     if (!userId) {
@@ -71,29 +87,13 @@ const HotelsList = () => {
       message.success("L'hôtel a été ajouté avec succès");
       clearInputs();
       handleCloseModal();
-      fetchAllHotels();
+      getAllHotels();
     } catch (error) {
       message.error(getErrorMessage(error));
     } finally {
       setLoading(false);
     }
   };
-
-  const fetchAllHotels = async () => {
-    const user = getUserDetails();
-    if (!user?.userId) return;
-
-    try {
-      const response = await HotelServices.getHotles(user.userId);
-      setAllHotels(response.data);
-    } catch (error) {
-      message.error(getErrorMessage(error));
-    }
-  };
-
-  useEffect(() => {
-    fetchAllHotels();
-  }, []); // Dependency array is empty to run only once on component mount
 
   return (
     <motion.div

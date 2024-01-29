@@ -6,6 +6,9 @@ import { useLocation, useNavigate } from 'react-router-dom';
 import { getUserDetails } from '../../util/GetUser';
 import User from '../../assets/user.png';
 import { IoMdArrowDropdown } from 'react-icons/io';
+import { message } from 'antd';
+import { getErrorMessage } from '../../util/GetError';
+import AuthServices from '../../services/AuthServices';
 
 export default function Header() {
   const location = useLocation();
@@ -21,9 +24,16 @@ export default function Header() {
     }
   }, [navigate]);
 
-  const handleLogout = () => {
-    localStorage.removeItem('User');
-    navigate('/');
+  const handleLogout = async () => {
+    try {
+      await AuthServices.logoutUser();
+      message.success('Déconnexion réussie');
+      localStorage.removeItem('User');
+      navigate('/');
+    } catch (error) {
+      console.error('Erreur lors de la déconnexion', error);
+      message.error(getErrorMessage(error));
+    }
   };
 
   const getHeaderTitle = () => {
@@ -80,7 +90,7 @@ export default function Header() {
                   <IoSearch className="text-xl text-gray-300" />
                 </span>
                 <input
-                  class="placeholder:italic placeholder:text-slate-400 block bg-white w-full border-2 rounded-full border-slate-300 py-2 pl-9 pr-3 shadow-sm focus:outline-none focus:border-sky-500 focus:ring-sky-500 focus:ring-1 sm:text-sm"
+                  class="placeholder:italic placeholder:text-slate-400 block bg-white w-full border-2 rounded-full py-2 pl-9 pr-3 shadow-sm focus:outline-none sm:text-sm"
                   placeholder="Recherche..."
                   type="text"
                   name="search"

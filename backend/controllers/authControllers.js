@@ -3,6 +3,10 @@ const jwt = require('jsonwebtoken');
 const nodemailer = require('nodemailer');
 const bcrypt = require('bcrypt');
 require('dotenv').config();
+const {
+  addTokenToBlacklist,
+  isTokenBlacklisted,
+} = require('../middleware/tokenBlacklist');
 
 const secretKey = process.env.JWT_SECRET;
 const port = process.env.PORT;
@@ -72,7 +76,7 @@ async function forgotPassword(req, res) {
       from: 'elamir3131@gmail.com',
       to: email,
       subject: 'Réinitialisation de mot de passe',
-      text: `https://server-hotel-gest.onrender.com/api/reset-mot-de-passe/${user._id}/${token}`,
+      text: `https://gestion-de-hotel.vercel.app/api/reset-mot-de-passe/${user._id}/${token}`,
     };
 
     transporter.sendMail(mailOptions, function (error, info) {
@@ -118,11 +122,33 @@ async function resetPassword(req, res) {
   });
 }
 
+async function logoutUser(req, res) {
+  const authHeader = req.headers.authorization;
+  const token = authHeader && authHeader.split(' ')[1];
+
+  if (!token || isTokenBlacklisted(token)) {
+    return res.status(401).send({
+      message: 'Aucun token fourni ou le token est déjà sur la liste noire',
+    });
+  }
+
+  try {
+    const decoded = jwt.verify(token, process.env.JWT_SECRET);
+    addTokenToBlacklist(token);
+    res.send({ message: 'Déconnexion réussie' });
+  } catch (error) {
+    res
+      .status(400)
+      .send({ message: 'Erreur lors de la déconnexion', error: error.message });
+  }
+}
+
 const AuthController = {
   registerUser,
   loginUser,
   forgotPassword,
   resetPassword,
+  logoutUser,
 };
 
 module.exports = AuthController;

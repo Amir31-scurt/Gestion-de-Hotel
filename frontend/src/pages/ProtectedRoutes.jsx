@@ -14,16 +14,9 @@ import ResetPassword from './ResetPassword';
 import { getUserDetails } from '../util/GetUser';
 
 export default function ProtectedRoutes() {
-  // const [user, setUser] = useState('');
-  // useEffect(() => {
-  //   const userDetails = getUserDetails();
-  //   setUser(userDetails);
-  // }, []);
-
   const router = createBrowserRouter([
     {
       index: true,
-      // element: user ? <Navigate to="/dashboard" /> : <Connexion />,
       element: <Connexion />,
     },
     {
